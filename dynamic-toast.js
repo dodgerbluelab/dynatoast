@@ -1,5 +1,6 @@
-async function DynamicToast({text, type, duration}) {
+async function DynamicToast({text, type, duration, expanded}) {
     return new Promise((resolve) => {
+
         let timer = duration ? duration : 5000;
         let remainingTime = timer;
         let startTime;
@@ -17,9 +18,14 @@ async function DynamicToast({text, type, duration}) {
 
         const toastEl = document.createElement('div');
         toastEl.setAttribute('data-dynamic-toast', type);
-        toastEl.innerHTML = text;
+        toastEl.textContent = text;
+        
+        if (expanded) {
+            toastEl.setAttribute('data-dynamic-toast-expanded', expanded);
+        }
         
         document.body.appendChild(toastEl);
+        
 
         // gets content width
         const dynamicWidth = toastEl.getBoundingClientRect().width;
