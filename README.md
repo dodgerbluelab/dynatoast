@@ -4,9 +4,9 @@
 ## Installation:
 Add these to your HTML head.
 
-\<link rel="stylesheet" href="`https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dynamic-toast.min.css`">
+\<link rel="stylesheet" href="`https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dynamic-toast.css`">
 
-\<script src="`https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dynamic-toast.min.js`"></script>
+\<script src="`https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dynamic-toast.js`"></script>
 
 ## Usage: 
 
