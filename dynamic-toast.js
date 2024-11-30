@@ -5,18 +5,10 @@ async function DynamicToast({text, type, timer, expanded}) {
         let startTime;
         let timeoutId;
         let isPaused = false;
-
-        let currentToasts = document.querySelectorAll('[data-dynamic-toast]');
-        currentToasts.forEach(toast => {
-            toast.remove();
-        })
+        
 
         // Check for existing async toast to transform
         const existingAsyncToast = document.querySelector('[data-dynamic-toast="async"]');
-
-        if (existingAsyncToast) {
-            existingAsyncToast.remove();
-        }
         
         if (type !== 'async' && existingAsyncToast) {
             existingAsyncToast.setAttribute('data-dynamic-toast', type);
