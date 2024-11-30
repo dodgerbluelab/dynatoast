@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DynamicToast Documentatio</title>
     <link rel="stylesheet" href="demo/styles.css">
-    <!-- <link rel="stylesheet" href="css/dynamic-toast.css">
-    <script src="js/dynamic-toast.js"></script> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css">
-    <script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"></script>
+    <link rel="stylesheet" href="dynamic-toast.css">
+    <script src="dynamic-toast.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css">
+    <script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"></script> -->
     <script type="module" src="demo/app.js"></script>
 </head>
 <body>
@@ -29,50 +29,64 @@
             duration: 3000 (ms)  <em>OPTIONAL (Will fallback to 5000)</em>
         </p>
 
-        <p>#1 DynamicToast</p>
-        <pre><code>
-    DynamicToast({
-        text: 'This is the DynamicToast',
-        type: 'success',
-        expanded: 'Please consider writing a thoughtful and clever expansion text.',
-        duration: 5000
-    })
-        </code></pre>
-    
-        <p>#2 DynamicToast</p>
-        <pre><code>
-    DynamicToast({
-        text: 'Inspired by Apple. Built with joy and passion.',
-        duration: 6000
-    })
-        </code></pre>
-
-        <p>#3 DynamicToast</p>
-        <pre><code>
-    DynamicToast({
-        text: 'A new message was recieved',
-        type: 'info',
-        duration: 5000
-    })
-        </code></pre>
-
-        <p>#4 DynamicToast</p>
-        <pre><code>
-    DynamicToast({
-        text: "Please be aware of your sharing you credentials",
-        type: 'warning',
-        duration: 2500
-    })
-        </code></pre>
-
-        <p>#5 DynamicToast</p>
-        <pre><code>
-    DynamicToast({
-        text: 'Starship experienced a Rapid Unscheduled Disassembly',
-        type: 'error',
-        duration: 5000
-    })
-        </code></pre>
+        <div class="doc-wrapper">
+            <div class="doc-wrapper">
+                <div class="doc-wrapper">
+                    <p>Example 1</p>
+                    <pre><code>DynamicToast({
+                      text: 'Check out our new features!',
+                      type: 'info',
+                      duration: 4000
+                  })</code></pre>
+                  
+                    <p>Example 2</p>
+                    <pre><code>DynamicToast({
+                      text: 'You are running low of tokens',
+                      type: 'warning',
+                      expanded: 'Based on you current you will need to purchase more tokens immediately!',
+                      duration: 5000
+                  })</code></pre>
+                  
+                    <p>Example 3</p>
+                    <pre><code>DynamicToast({
+                      text: 'Failed to connect to the server',
+                      type: 'error',
+                      expanded: 'Please check your internet connection and try again',
+                      duration: 6000
+                  })</code></pre>
+                  
+                    <p>Example 4</p>
+                    <pre><code>DynamicToast({
+                      text: 'Your profile has been updated',
+                      type: 'success',
+                      duration: 3000
+                  })</code></pre>
+                  
+                    <p>Example 5</p>
+                    <pre><code>DynamicToast({
+                      text: 'New message from John',
+                      type: 'info',
+                      expanded: 'Hey, are we still meeting today?',
+                      duration: 4000
+                  })</code></pre>
+                  
+                    <p>Example 6</p>
+                    <pre><code>saveThis().then(() => {
+                      DynamicToast({
+                          text: "Successfully saved!",
+                          type: "success",
+                          duration: 3000
+                      }).then(() => {
+                          DynamicToast({
+                              text: 'You just saw an async DynamicToast-call',
+                              expanded: 'Use an async function; if the callback is succesful, then add a new. This will automatically update the latter.',
+                              duration: 8000
+                          })
+                      })
+                  })</code></pre>
+                  </div>
+              </div>
+          </div>
     
     </div>
 </body>
