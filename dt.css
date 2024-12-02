@@ -3,7 +3,7 @@
     font-size: 16px;
     --tX: -50%;
     --tY: 0%;
-    --toast-width: clamp(calc(100vw - 20px), calc(100vw - 20px), 420px);
+    --toast-width: clamp(calc(100vw - 16px), calc(100vw - 16px), 420px);
     position: fixed;
     box-sizing: border-box;
     display: grid;
