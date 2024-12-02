@@ -3,14 +3,14 @@
     font-size: 16px;
     --tX: -50%;
     --tY: 0%;
-    --toast-width: clamp(calc(100vw - 40px), calc(100vw - 40px), 420px);
+    --toast-width: clamp(calc(100vw - 20px), calc(100vw - 20px), 420px);
     position: fixed;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(24px, 24px) 1fr;
     align-items: center;
     gap: 8px;
-    top: 20px;
+    top: 8px;
     left: 50%;
     width: var(--toast-width);
     padding: 16px;

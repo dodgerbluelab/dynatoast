@@ -75,7 +75,7 @@ async function DynamicToast({text, type, timer, expanded}) {
         let dynamicWidth = '420px'
 
         if (isMobile) {
-            dynamicWidth = 'calc(100vw - 40px)'
+            dynamicWidth = 'calc(100vw - 16px)'
         }
 
 
