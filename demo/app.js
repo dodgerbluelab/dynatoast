@@ -22,13 +22,13 @@ async function saveThis() {
 
     try {
         // Simulate API call with a delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         
     } catch (error) {
         DynamicToast({
             text: "Failed to save",
             type: "error",
-            duration: 4000
+            timer: 4000
         });
     }
 }
@@ -40,7 +40,7 @@ function initializeClickableExamples() {
         () => DynamicToast({
             text: 'Check out our new features!',
             type: 'info',
-            duration: 4000
+            timer: 3000
         }),
 
         // Example 2
@@ -48,22 +48,22 @@ function initializeClickableExamples() {
             text: 'You are running low of tokens',
             type: 'warning',
             expanded: 'Based on you current you will need to purchase more tokens immediately!',
-            duration: 5000
+            timer: 6000
         }),
 
         // Example 3
         () => DynamicToast({
             text: 'Failed to connect to the server',
             type: 'error',
-            expanded: 'Please check your internet connection and try again',
-            duration: 6000
+            expanded: 'Please check your internet connection and try again.',
+            timer: 5000
         }),
 
         // Example 4
         () => DynamicToast({
             text: 'Your profile has been updated',
             type: 'success',
-            duration: 3000
+            timer: 3000
         }),
 
         // Example 5
@@ -71,7 +71,7 @@ function initializeClickableExamples() {
             text: 'New message from John',
             type: 'info',
             expanded: 'Hey, are we still meeting today?',
-            duration: 4000
+            timer: 4000
         }),
 
         // Example 6
@@ -81,13 +81,13 @@ function initializeClickableExamples() {
                     DynamicToast({
                         text: "Successfully saved!",
                         type: "success",
-                        duration: 3000
+                        timer: 2000
                     })
                         .then(() => {
                             DynamicToast({
                                 text: 'You just saw an async DynamicToast-call',
                                 expanded: 'Use an async function; if the callback is succesful, then add a new. This will automatically update the latter.',
-                                duration: 8000
+                                timer: 5000
                             })
                         })
                 })

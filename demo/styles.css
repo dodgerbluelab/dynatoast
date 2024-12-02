@@ -15,11 +15,17 @@ h1 {
 .doc-wrapper {
     margin-top: 15vh;
 }
+
+code {
+    word-break: break-all;
+}
 pre {
     background-color: #eee;
     border-radius: 8px;
     transition: .2s ease-in-out;
     padding: 15px;
+    white-space: pre-line;
+
 
     &.active {
         box-shadow: 0 0 0 4px #fff, 0 0 0 6px dodgerblue;
