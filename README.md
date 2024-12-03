@@ -14,6 +14,8 @@ Throw a DynamicToast() width a few parameters:
 
 `text: 'Your toast message here'` REQUIRED
 
+`expanded: 'Addtional info here'` OPTIONAL
+
 `type: 'success', 'info', 'warning', 'error', 'async'` OPTIONAL
 
 `duration: 3000 (ms) ` OPTIONAL (Will fallback to 5000)
