@@ -5,113 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DynamicToast Documentation</title>
     <link rel="stylesheet" href="demo/styles.css">
-    <link rel="stylesheet" href="dt.css">
-    <script src="dt.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css">
-    <script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"></script> -->
-    <script type="module" src="demo/app.js"></script>
+    <!-- <link rel="stylesheet" href="dt.css">
+    <script src="dt.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css">
+    <script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"></script>
+    <script type="module" defer src="demo/app.js"></script>
 </head>
 <body>
-    <div class="doc-wrapper">
-        <h1>DynamicToast </h1>  
-        - a lightweight toast system inspired by Apple's Dynamic Island
-        <p><strong>To get started, simply add these two to the html meta tag:</strong></p>
-        <code>
-            &lt;!-- DynamicToast CSS --&gt;<br>
-            &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css"&gt;<br><br>
-            &lt;!-- DynaToast JavaScript --&gt;<br>
-            &lt;script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"&gt;&lt;/script&gt;
-        </code>
-
-        <p> 
-            <strong>DynamicToast Options</strong>
-            <ol>
-                <li>Text: 'Your toast message here' <em class="required">REQUIRED</em> </li>
-                <li>Expanded: 'Addtional info here'</li>
-                <li>Type:<ul>
-                    <li>
-                        'success'
-                    </li>
-                    <li>
-                        'info'
-                    </li>
-                    <li>
-                        'warning'
-                    </li>
-                    <li>
-                        'error'
-                    </li>
-                    <li>
-                        'async'
-                    </li>
-                    <li>
-                        'emoji: 🚀'
-                    </li>
-                </ul>
-                <li>Duration: 3000 (ms)  (Will fallback to 5000)</li>
-            </ol>
-        </p>
-
-        <h4>Click the exmaples to see it in action! 🚀</h4>
-
-        <div class="examples-wrapper">
-            <p>Example 1</p>
-            <pre><code>DynamicToast({
-                &nbsp text: 'Check out our new features!',
-                &nbsp type: 'info',
-                &nbsp timer: 3000
-                })
-            </code></pre>
-          
-            <p>Example 2</p>
-            <pre><code>DynamicToast({
-                &nbsp text: 'You are running low of tokens',
-                &nbsp type: 'warning',
-                &nbsp expanded: 'Based on you current you will need to purchase more tokens immediately!',
-                &nbsp timer: 6000
-            })</code></pre>
-          
-            <p>Example 3</p>
-            <pre><code>DynamicToast({
-                &nbsp text: 'Failed to connect to the server',
-                &nbsp type: 'error',
-                &nbsp expanded: 'Please check your internet connection and try again.',
-                &nbsp timer: 5000
-            })</code></pre>
-          
-            <p>Example 4</p>
-            <pre><code>DynamicToast({
-                &nbsp text: 'Your profile has been updated',
-                &nbsp type: 'success',
-                &nbsp timer: 3000
-            })</code></pre>
-          
-            <p>Example 5</p>
-            <pre><code>DynamicToast({
-                &nbsp text: 'New message from John',
-                &nbsp type: 'info',
-                &nbsp expanded: 'Hey, are we still meeting today?',
-                &nbsp timer: 4000
-            })</code></pre>
-          
-            <p>Example 6</p>
-            <pre><code>saveThis()
-                &nbsp .then(() => {
-                    &nbsp     DynamicToast({
-                        &nbsp text: "Successfully saved!",
-                        &nbsp type: "success",
-                        &nbsp timer: 2000
-                    })
-                        .then(() => {
-                            &nbsp  DynamicToast({
-                                &nbsp text: 'You just saw an async DynamicToast-call',
-                                &nbsp expanded: 'Use an async function; if the callback is succesful, then add a new. <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp This will automatically update the latter.',
-                                &nbsp timer: 5000
-                            })
-                        })
-                })</code></pre>
-          </div>
+    <h1>DynamicToast Documentation</h1>
     
+    <p>DynamicToast is a lightweight, customizable toast notification system that provides animated notifications with support for different types, automatic dismissal, and pause-on-hover functionality. Heavily and deliberately inspired by Apple's Dynamic Island.
+    </p>
+
+    <h2>Features & Behavior</h2>
+    <ul>
+        <li><strong>Animations:</strong> Toasts animate in from a circular shape to a rectangular notification, with unique animations for each type (like spinning for async, wave for emoji)</li>
+        <li><strong>Toast Types:</strong> Multiple notification styles with distinct SVG icons and animations for different contexts (success, error, warning, etc.)</li>
+        <li><strong>Expandable Content:</strong> Optional accordion-style expansion to reveal additional details when needed</li>
+        <li><strong>Smart Interaction:</strong> 
+            <ul>
+                <li>Timer pauses on hover for better readability</li>
+                <li>Automatic transformation of existing async to update active toasts</li>
+                <li>Customizable display duration</li>
+            </ul>
+        </li>
+        <li><strong>Mobile-First:</strong> Responsive design that automatically adjusts width and layout for smaller screens</li>
+        <li><strong>Developer-Friendly:</strong> Promise-based API for better control flow and async operation handling</li>
+    </ul>
+
+    <h2>Function Signature</h2>
+    <div class="method-signature">
+        <code>async function DynamicToast({text, type, timer, expanded})</code>
+    </div>
+
+    <h2>Parameters</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>text</code></td>
+                    <td>String</td>
+                    <td>Required</td>
+                    <td>The message to display in the toast notification</td>
+                </tr>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>String</td>
+                    <td>undefined</td>
+                    <td>Type of toast: undefined (no icon), 'success', 'error', 'warning', 'info', 'async', or 'emoji:📍'</td>
+                </tr>
+                <tr>
+                    <td><code>timer</code></td>
+                    <td>Number</td>
+                    <td>5000</td>
+                    <td>Duration in milliseconds before the toast is automatically dismissed</td>
+                </tr>
+                <tr>
+                    <td><code>expanded</code></td>
+                    <td>String</td>
+                    <td>undefined</td>
+                    <td>Additional text content that can be expanded like an accordion</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Toast Types</h2>
+    <div class="type-grid">
+        <div class="type-card">
+            <h4>Success</h4>
+            <p>Green checkmark icon</p>
+            <pre>type: "success"</pre>
+            <div class="toast-context">Use when an operation completes successfully or to confirm a positive action</div>
+        </div>
+        
+        <div class="type-card">
+            <h4>Error</h4>
+            <p>Red X icon in circle</p>
+            <pre>type: "error"</pre>
+            <div class="toast-context">Use when an operation fails or to indicate a critical issue that needs attention</div>
+        </div>
+        
+        <div class="type-card">
+            <h4>Warning</h4>
+            <p>Yellow exclamation triangle</p>
+            <pre>type: "warning"</pre>
+            <div class="toast-context">Use for important notices or to alert users about potential issues</div>
+        </div>
+        
+        <div class="type-card">
+            <h4>Info</h4>
+            <p>Blue information circle</p>
+            <pre>type: "info"</pre>
+            <div class="toast-context">Use for general information or helpful tips that don't require immediate action</div>
+        </div>
+        
+        <div class="type-card">
+            <h4>Async</h4>
+            <p>White loading spinner</p>
+            <pre>type: "async"</pre>
+            <div class="toast-context">Use during loading states or when an operation is in progress</div>
+        </div>
+        
+        <div class="type-card">
+            <h4>Emoji</h4>
+            <p>Custom emoji icon</p>
+            <pre>type: "emoji:👋"</pre>
+            <div class="toast-context">Use for friendly, casual messages or to add personality to notifications</div>
+        </div>
+    </div>
+
+    <h2>Usage Examples</h2>
+
+    <h3>Wave Hello Toast</h3>
+    <pre class="example">
+DynamicToast({
+    text: 'Hi there! Wanna see something cool?',
+    type: 'emoji:👋',
+    timer: 3000
+})</pre>
+
+    <h3>Basic Info Toast</h3>
+    <pre class="example">
+DynamicToast({
+    text: 'Check out our new features!',
+    type: 'info',
+    timer: 3000
+});</pre>
+
+    <h3>Warning with Expanded Content</h3>
+    <pre class="example">
+DynamicToast({
+    text: 'You are running low of tokens',
+    type: 'warning',
+    expanded: 'Based on you current you will need to purchase more tokens immediately!',
+    timer: 6000
+});</pre>
+
+    <h3>Error with Troubleshooting Info</h3>
+    <pre class="example">
+DynamicToast({
+    text: 'Failed to connect to the server',
+    type: 'error',
+    expanded: 'Please check your internet connection and try again.',
+    timer: 5000
+});</pre>
+
+    <h3>Simple Success Confirmation</h3>
+    <pre class="example">
+DynamicToast({
+    text: 'Your profile has been updated',
+    type: 'success',
+    timer: 3000
+});</pre>
+
+    <h3>Info with Message Preview</h3>
+    <pre class="example">
+DynamicToast({
+    text: 'New message from John',
+    type: 'info',
+    expanded: 'Hey, are we still meeting today?',
+    timer: 4000
+});</pre>
+
+    <h3>Chained Async Operations</h3>
+    <pre class="example">
+async function saveThis() {
+
+    DynamicToast({
+        text: "Saving your stuff",
+        type: "async"
+    });
+
+    try {
+        // Simulate API call with a delay
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        
+    } catch (error) {
+        DynamicToast({
+            text: "Failed to save",
+            type: "error",
+            timer: 4000
+        });
+    }
+}
+
+saveThis()
+    .then(() => {
+        DynamicToast({
+            text: "Successfully saved!",
+            type: "success",
+            timer: 2000
+        }).then(() => {
+            DynamicToast({
+                text: 'You just saw a few async DynamicToast-calls',
+                type: "info"
+                timer: 5000
+            })
+        })
+
+    });</pre>
+
+
+    <h2>Error Handling</h2>
+    <p>The function will log an error to the console and return early if:</p>
+    <ul>
+        <li>The <code>text</code> parameter is missing or empty</li>
+    </ul>
+
+    <div class="note">
+        <strong>Best Practice:</strong> Always await the DynamicToast function to ensure proper timing and animation completion before performing subsequent operations.
     </div>
 </body>
 </html>

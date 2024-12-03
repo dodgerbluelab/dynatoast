@@ -19,6 +19,7 @@
     background-color: #000;
     color: transparent;
     animation: dynamicToastIntro .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    white-space: pre-line;
     cursor: default;
     user-select: none;
     overflow: hidden;

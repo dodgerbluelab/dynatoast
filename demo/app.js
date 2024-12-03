@@ -1,15 +1,10 @@
-function highlightCodeBlock(clickedElement) {
-    let allToasts = document.querySelectorAll('[data-dynamic-toast]');
-    allToasts.forEach(toast => {
-        toast.remove();
-    })
-    const codeBlocks = Array.from(document.querySelectorAll('.doc-wrapper pre'));
-    codeBlocks.forEach(block => {
-        block.classList.remove('active');
-    });
-    clickedElement.classList.add('active');
+function highlightCodeBlock(element) {
+    document.querySelectorAll('[data-dynamic-toast]').forEach(item => item.remove())
+    element.style.boxShadow = '0 0 0 2px #fff, 0 0 0 4px dodgerblue';
+    setTimeout(() => {
+        element.style.boxShadow = 'none';
+    }, 3000);
 }
-
 
 
 
@@ -36,6 +31,14 @@ async function saveThis() {
 
 function initializeClickableExamples() {
     const examples = [
+
+            // Wave Example
+            () => DynamicToast({
+            text: 'Hi there! Wanna see something cool?',
+            type: 'emoji:👋',
+            timer: 3000
+        }),
+
         // Example 1
         () => DynamicToast({
             text: 'Check out our new features!',
@@ -82,20 +85,19 @@ function initializeClickableExamples() {
                         text: "Successfully saved!",
                         type: "success",
                         timer: 2000
-                    })
-                        .then(() => {
-                            DynamicToast({
-                                text: 'You just saw an async DynamicToast-call',
-                                expanded: 'Use an async function; if the callback is succesful, then add a new. This will automatically update the latter.',
-                                timer: 5000
-                            })
+                    }).then(() => {
+                        DynamicToast({
+                            text: 'You just saw a few async DynamicToast-calls',
+                            type: "info",
+                            timer: 5000
                         })
-                })
+                    })
+            
+                });
         }
     ];
 
-    document.querySelectorAll('.doc-wrapper pre').forEach((pre, index) => {
-        pre.style.cursor = 'pointer';
+    document.querySelectorAll('.example').forEach((pre, index) => {
         pre.title = 'Click to run this example';
         
         pre.addEventListener('mouseenter', () => {
@@ -113,13 +115,11 @@ function initializeClickableExamples() {
     });
 }
 
-// Call this after your HTML is rendered
-initializeClickableExamples();
+initializeClickableExamples()
 
 DynamicToast({
     text: 'Hi there, this is DynamicToast',
     type: 'emoji: 👋',
-    expanded: 'Check out the example to get started. Thank you for your support!',
+    expanded: 'Thank you for your support!\nCheck out the example to get started.',
     timer: 3000
 })
-
