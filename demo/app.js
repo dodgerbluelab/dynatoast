@@ -38,7 +38,7 @@ function initializeClickableExamples() {
     const examples = [
         // Example 1
         () => DynamicToast({
-            text: 'Check out our new features!',
+            text: 'Check out our new features! It has a very long titile that should break the toast',
             type: 'info',
             timer: 3000
         }),
@@ -115,3 +115,11 @@ function initializeClickableExamples() {
 
 // Call this after your HTML is rendered
 initializeClickableExamples();
+
+DynamicToast({
+    text: 'Hi there, this is DynamicToast',
+    type: 'emoji: 👋',
+    expanded: 'Yo! This is a freaking rocket ship launch',
+    timer: 3000
+})
+

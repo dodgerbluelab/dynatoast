@@ -9,10 +9,8 @@ async function DynamicToast({text, type, timer, expanded}) {
         let timeoutId;
         let isPaused = false;
 
-        console.log(type)
-
         type = type === undefined ? 'default' : type;
-        
+        type.toLowerCase()
         
 
         // Check for existing async toast to transform
@@ -68,6 +66,12 @@ async function DynamicToast({text, type, timer, expanded}) {
 
         if (expanded) { 
             toastEl.setAttribute('data-dynamic-toast-expanded', expanded); 
+        }
+
+        if (type.includes('emoji')) { 
+            let emoji = type.split(':')[1].trim()
+            toastEl.setAttribute('data-dynamic-toast-emoji', emoji);
+            toastEl.setAttribute('data-dynamic-toast', 'emoji'); 
         }
         
         document.body.appendChild(toastEl);

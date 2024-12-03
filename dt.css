@@ -8,8 +8,8 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(24px, 24px) 1fr;
-    align-items: center;
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: 4px;
     top: 8px;
     left: 50%;
     width: var(--toast-width);
@@ -17,7 +17,7 @@
     border-radius: 28px;
     transform: translate(var(--tX), var(--tY));
     background-color: #000;
-    color: #000;
+    color: transparent;
     animation: dynamicToastIntro .5s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: default;
     user-select: none;
@@ -27,9 +27,9 @@
     &.visible {
         color: #fff;
         transition: 
-            color .32s .05s cubic-bezier(0.39, 0.575, 0.565, 1),
-            width .12s cubic-bezier(0.075, 0.82, 0.165, 1),
-            scale .2s ease-out;
+            .12s ease-in-out,
+            color .4s .05s cubic-bezier(0.33, 1, 0.68, 1),
+            height .2s cubic-bezier(0.33, 1, 0.68, 1);
         
 
         &:before {
@@ -40,13 +40,7 @@
             background-repeat: no-repeat;
         }
 
-        &[data-dynamic-toast-expanded], &[data-dynamic-toast="default"] {
-            align-items: unset;
-            transition: 
-                .12s ease-in-out,
-                color .4s .1s cubic-bezier(0.33, 1, 0.68, 1),
-                height .2s cubic-bezier(0.33, 1, 0.68, 1);
-            
+        &[data-dynamic-toast-expanded], &[data-dynamic-toast="default"] {            
     
             &:after {
                 color: #aaa;
@@ -62,10 +56,11 @@
         content: '';
         width: 100%;
         position: absolute;
-        scale: 60%;
-        aspect-ratio: 1;
+        scale: .55; 
+        aspect-ratio: 1; 
         background-size: contain;
         background-repeat: no-repeat;
+        transform: .2s ease-in-out;
     }
 
 
@@ -87,25 +82,25 @@
         height: 48px !important;
         transition: 
             transform .32s .22s cubic-bezier(0.36, 0, 0.66, -0.56), 
-            width .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            height .2s cubic-bezier(0.455, 0.03, 0.515, 0.955),
+            width .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
 
-        &:before {
-            opacity: 0;
-        }
-
-        &:after {
+        &:before, &:after {
             display: none;
         }
+
     }
 
 
 
     &[data-dynamic-toast="default"] {
         grid-template-columns: 1fr;
+        
         &:before {
             display: none;
         }
+
 
         &:where([data-dynamic-toast-expanded]) {
             &:after {
@@ -157,8 +152,32 @@
         } 
     }
 
+    &[data-dynamic-toast="emoji"] {
+        &:before {
+            content: attr(data-dynamic-toast-emoji);
+            text-align: center;
+            scale: 1.3;
+            color: #fff;
+            position: relative;
+            animation: none;
+        } 
+
+        &:where([data-dynamic-toast-emoji="👋"]) {
+
+            &.visible {
+                &:before {
+                    animation: dynamicToastSuccess .3s ease-in-out alternate-reverse 2;
+                }   
+            }
+        }
+
+    }
+
+
 
 }
+
+
 
 
 
