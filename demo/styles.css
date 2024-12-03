@@ -7,12 +7,12 @@ body {
 }
 
 h1 {
-    margin-top: 10vh;
-    margin-bottom: 0;;
+    margin-top: 100px;
+    margin-bottom: 0;
 }
 li {
     padding: 0;
-    margin: 5px 0;
+    margin-bottom: 20px;
 }
 em {
     background-color: dodgerblue;
@@ -25,14 +25,10 @@ em {
     }
 }
 
-.doc-wrapper {
-    margin-top: 20px;
-}
-
 .concept {
     background-color: #000;
     padding: 12px;
-    
+
 }
 code {
     word-break: break-all;

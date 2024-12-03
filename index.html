@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DynamicToast Documentation</title>
     <link rel="stylesheet" href="demo/styles.css">
-    <!-- <link rel="stylesheet" href="dt.css">
-    <script src="dt.js"></script> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css">
-    <script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"></script>
+    <link rel="stylesheet" href="dt.css">
+    <script src="dt.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css">
+    <script src="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.js"></script> -->
     <script type="module" src="demo/app.js"></script>
 </head>
 <body>
     <div class="doc-wrapper">
-        <p><h1>DynamicToast </h1>- a lightweight toast system inspired by Apple's Dynamic Island</p>
-        <p>To get started, Add these two to the html meta tag:</p>
+        <h1>DynamicToast </h1>  
+        - a lightweight toast system inspired by Apple's Dynamic Island
+        <p><strong>To get started, simply add these two to the html meta tag:</strong></p>
         <code>
             &lt;!-- DynamicToast CSS --&gt;<br>
             &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dodgerbluelab/dynatoast@latest/dt.css"&gt;<br><br>
@@ -26,9 +27,28 @@
             <strong>DynamicToast Options</strong>
             <ol>
                 <li>Text: 'Your toast message here' <em class="required">REQUIRED</em> </li>
-                <li>Expanded: 'Addtional info here' <em>OPTIONAL</em></li>
-                <li>Type: 'success', 'info', 'warning', 'error', 'async' <em>OPTIONAL</em></li>
-                <li>Duration: 3000 (ms)  <em>OPTIONAL (Will fallback to 5000)</em></li>
+                <li>Expanded: 'Addtional info here'</li>
+                <li>Type:<ul>
+                    <li>
+                        'success'
+                    </li>
+                    <li>
+                        'info'
+                    </li>
+                    <li>
+                        'warning'
+                    </li>
+                    <li>
+                        'error'
+                    </li>
+                    <li>
+                        'async'
+                    </li>
+                    <li>
+                        'emoji: 🚀'
+                    </li>
+                </ul>
+                <li>Duration: 3000 (ms)  (Will fallback to 5000)</li>
             </ol>
         </p>
 
