@@ -95,9 +95,9 @@
 
 
 
-    &[data-dynamic-toast="default"] {
+    &[data-dynamic-toast="default"], &[data-dynamic-toast="action"]  {
         grid-template-columns: 1fr;
-        
+
         &:before {
             display: none;
         }
@@ -109,6 +109,36 @@
             }
         }
     }
+
+    /* &[data-dynamic-toast="action"] {
+        & > [data-toast-actions] {
+            order: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 8px;
+            margin: 12px 0;
+            margin-bottom: 0px;
+
+            button {
+                background-color: #fff;
+                color: #333;
+                border-radius: 99px;
+                padding: 12px;
+                border: none;
+                cursor: pointer;
+                transition: .2s ease-in-out;    
+
+                &:hover {
+                    opacity: .9;
+                }
+
+                &[data-toast-action="decline"] {
+                    background-color: rgba(255,255,255,.3);
+                    color: #fff;
+                }
+            }
+        }
+    } */
 
     &[data-dynamic-toast-expanded] {
         &:after {

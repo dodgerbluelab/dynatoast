@@ -32,8 +32,8 @@ async function saveThis() {
 function initializeClickableExamples() {
     const examples = [
 
-            // Wave Example
-            () => DynamicToast({
+        // Wave Example
+        () => DynamicToast({
             text: 'Hi there! Wanna see something cool?',
             type: 'emoji:👋',
             timer: 3000
@@ -118,8 +118,7 @@ function initializeClickableExamples() {
 initializeClickableExamples()
 
 DynamicToast({
-    text: 'Hi there, this is DynamicToast',
-    type: 'emoji: 👋',
-    expanded: 'Thank you for your support!\nCheck out the example to get started.',
-    timer: 3000
+    type: 'emoji:👋',
+    text: 'Hi there! This is a DynamicToast',
+    expanded: 'Check out the documentation and get started!'
 })

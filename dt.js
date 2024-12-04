@@ -1,4 +1,4 @@
-async function DynamicToast({text, type, timer, expanded}) {
+async function DynamicToast({text, type, timer, expanded,actions}) {
 
     let isMobile = window.innerWidth < 480;
 
@@ -73,8 +73,12 @@ async function DynamicToast({text, type, timer, expanded}) {
             toastEl.setAttribute('data-dynamic-toast-emoji', emoji);
             toastEl.setAttribute('data-dynamic-toast', 'emoji'); 
         }
-        
-        document.body.appendChild(toastEl);
+
+        // if (actions) {
+        //     toastEl.setAttribute('data-dynamic-toast', 'action');
+        //     handleActions(actions, toastEl);
+        // }
+    
 
         let dynamicWidth = '420px'
 
@@ -104,9 +108,7 @@ async function DynamicToast({text, type, timer, expanded}) {
         
         toastEl.addEventListener('animationend', handleAnimationEnd, { once: true });
 
-
-
-        function dismissToast() {
+        async function dismissToast() {
             toastEl.classList.remove('visible');
             toastEl.classList.add('dismiss');
             toastEl.style.width = baseSize;
@@ -119,7 +121,29 @@ async function DynamicToast({text, type, timer, expanded}) {
             });
         }
 
-        if (type !== 'async') {
+        // function handleActions(actions, toastEl) {
+        //     const actionWrapper = document.createElement('div');
+        //     actionWrapper.setAttribute('data-toast-actions', '')
+         
+        //     function createButton(action) {
+        //         const actionName = Object.entries(actions).find(([_, value]) => value === action)?.[0];
+        //         const button = document.createElement('button');
+        //         button.setAttribute('data-toast-action', actionName)
+        //         button.textContent = action.cta;
+        //         button.onclick = () => {
+        //             dismissToast().then(() => {
+        //                 action.handler();
+        //             })
+        //         };
+        //         return button;
+        //     }
+         
+        //     actionWrapper.appendChild(createButton(actions.decline));
+        //     actionWrapper.appendChild(createButton(actions.accept));
+        //     toastEl.appendChild(actionWrapper);
+        //  }
+
+        if (type !== 'async' && !actions) {
             startTime = Date.now();
             timeoutId = setTimeout(dismissToast, duration);
 
@@ -139,5 +163,8 @@ async function DynamicToast({text, type, timer, expanded}) {
                 }
             });
         }
+
+        document.body.appendChild(toastEl);
     });
+
 }
