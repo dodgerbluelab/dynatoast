@@ -21,7 +21,7 @@ code {
     background: #f4f4f4;
     padding: 2px 5px;
     border-radius: 3px;
-    overflow: auto;
+    overflow-x: auto;
 }
 .method-signature {
     background: #e9ecef;
