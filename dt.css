@@ -191,6 +191,7 @@
                 color: lch(from var(--bg, #444) calc((50 - l) * infinity) 0 0);
                 border-radius: 99px;
                 padding: 12px;
+                font-size: 16px;
                 border: none;
                 cursor: pointer;
                 text-transform: capitalize;
