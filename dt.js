@@ -3,7 +3,7 @@ async function DynamicToast({text, type, timer, expanded,actions}) {
     let isMobile = window.innerWidth < 480;
 
     return new Promise((resolve) => {
-        let duration = timer ? timer : 5000;
+        let duration = timer ? timer : 3000;
         let remainingTime = duration;
         let startTime;
         let timeoutId;
@@ -74,10 +74,10 @@ async function DynamicToast({text, type, timer, expanded,actions}) {
             toastEl.setAttribute('data-dynamic-toast', 'emoji'); 
         }
 
-        // if (actions) {
-        //     toastEl.setAttribute('data-dynamic-toast', 'action');
-        //     handleActions(actions, toastEl);
-        // }
+        if (actions) {
+            toastEl.setAttribute('data-dynamic-toast', 'action');
+            handleActions(actions, toastEl);
+        }
     
 
         let dynamicWidth = '420px'
@@ -121,27 +121,26 @@ async function DynamicToast({text, type, timer, expanded,actions}) {
             });
         }
 
-        // function handleActions(actions, toastEl) {
-        //     const actionWrapper = document.createElement('div');
-        //     actionWrapper.setAttribute('data-toast-actions', '')
-         
-        //     function createButton(action) {
-        //         const actionName = Object.entries(actions).find(([_, value]) => value === action)?.[0];
-        //         const button = document.createElement('button');
-        //         button.setAttribute('data-toast-action', actionName)
-        //         button.textContent = action.cta;
-        //         button.onclick = () => {
-        //             dismissToast().then(() => {
-        //                 action.handler();
-        //             })
-        //         };
-        //         return button;
-        //     }
-         
-        //     actionWrapper.appendChild(createButton(actions.decline));
-        //     actionWrapper.appendChild(createButton(actions.accept));
-        //     toastEl.appendChild(actionWrapper);
-        //  }
+        function handleActions(actions, toastEl) {
+            const actionWrapper = document.createElement('div');
+            actionWrapper.setAttribute('data-toast-actions', 'action');
+            
+            actions.forEach(action => {
+                const button = document.createElement('button');
+                button.textContent = action.cta;
+                const bgColor = action.bg ? (action.bg.startsWith('--') ? `var(${action.bg})` : action.bg) : '';
+                button.style.setProperty('--bg', bgColor);
+                button.onclick = () => {
+                    document.querySelectorAll('[data-dynamic-toast]')
+                        .forEach(toast => toast.remove())
+                    action.handler();
+                };
+                actionWrapper.appendChild(button);
+                actionWrapper.style.setProperty('--btn-count', actions.length)
+            });
+        
+            toastEl.appendChild(actionWrapper);
+        }
 
         if (type !== 'async' && !actions) {
             startTime = Date.now();

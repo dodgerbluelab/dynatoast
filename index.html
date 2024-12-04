@@ -83,6 +83,12 @@
                     <td>undefined</td>
                     <td>Additional text content that can be expanded like an accordion</td>
                 </tr>
+                <tr>
+                    <td><code>actions</code></td>
+                    <td>Array</td>
+                    <td>undefined</td>
+                    <td>Will enable you to show button and add custom actions</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -184,6 +190,32 @@ DynamicToast({
     expanded: 'Hey, are we still meeting today?',
     timer: 4000
 });</pre>
+
+<h3>Toast with Buttons</h3>
+<div class="note info">
+    <strong>Best Practice:</strong> Actions are ideal for user interactions that require explicit choices. Use them for permission requests (like location access) or when you need clear user confirmation before proceeding with sensitive operations.
+</div>
+<pre class="example">
+DynamicToast({
+    text: 'Do you want to continue?',
+    actions: [
+        {
+            cta: "nope",
+            handler: () => DynamicToast({text: 'Sure thing', type: 'emoji: 🤷'}),
+            timer: 3000
+
+            Will handle color values, CSS variables. Undefined will have fallback.
+            The text color is handled automatically to ensure accessability
+            // bg: '--color-blue' 
+        },
+        {
+            cta: "continue",
+            handler: () => DynamicToast({text: 'Great choice', type:'success'}),
+            bg: 'limegreen'
+        }
+    ],
+})
+</pre>
 
     <h3>Chained Async Operations</h3>
     <pre class="example">

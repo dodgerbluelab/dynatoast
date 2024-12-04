@@ -95,7 +95,7 @@
 
 
 
-    &[data-dynamic-toast="default"], &[data-dynamic-toast="action"]  {
+    &[data-dynamic-toast="default"]  {
         grid-template-columns: 1fr;
 
         &:before {
@@ -110,35 +110,7 @@
         }
     }
 
-    /* &[data-dynamic-toast="action"] {
-        & > [data-toast-actions] {
-            order: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 8px;
-            margin: 12px 0;
-            margin-bottom: 0px;
 
-            button {
-                background-color: #fff;
-                color: #333;
-                border-radius: 99px;
-                padding: 12px;
-                border: none;
-                cursor: pointer;
-                transition: .2s ease-in-out;    
-
-                &:hover {
-                    opacity: .9;
-                }
-
-                &[data-toast-action="decline"] {
-                    background-color: rgba(255,255,255,.3);
-                    color: #fff;
-                }
-            }
-        }
-    } */
 
     &[data-dynamic-toast-expanded] {
         &:after {
@@ -201,6 +173,45 @@
                 }   
             }
         }
+
+    }
+
+    &[data-dynamic-toast="action"] {
+        & > [data-toast-actions] {
+            display: grid;
+            grid-column: 1 / -1; 
+            order: 1;
+            grid-template-columns: repeat(var(--btn-count), 1fr); /*comes from js */
+            column-gap: 8px;
+            margin: 12px 0;
+            margin-bottom: 0px;
+
+            button {    
+                background-color: var(--bg, #444);
+                color: lch(from var(--bg, #444) calc((50 - l) * infinity) 0 0);
+                border-radius: 99px;
+                padding: 12px;
+                border: none;
+                cursor: pointer;
+                text-transform: capitalize;
+                
+
+                &:hover {
+                    opacity: .9;
+                    transition: .2s ease-in-out;    
+                }
+
+                &:last-child {
+                    background-color: var(--bg, #fff);
+                    color: lch(from var(--bg, #fff) calc((50 - l) * infinity) 0 0);
+                }
+            }
+        }
+
+        &:before {
+            animation: dynamicToastInfo .4s .5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'%3E%3C/path%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'%3E%3C/line%3E%3C/svg%3E");     
+        } 
 
     }
 

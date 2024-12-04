@@ -3,7 +3,7 @@ function highlightCodeBlock(element) {
     element.style.boxShadow = '0 0 0 2px #fff, 0 0 0 4px dodgerblue';
     setTimeout(() => {
         element.style.boxShadow = 'none';
-    }, 3000);
+    }, 1500);
 }
 
 
@@ -75,6 +75,23 @@ function initializeClickableExamples() {
             type: 'info',
             expanded: 'Hey, are we still meeting today?',
             timer: 4000
+        }),
+
+        () => DynamicToast({
+            text: 'Do you want to continue?',
+            actions: [
+                {
+                    cta: "nope",
+                    handler: () => DynamicToast({text: 'Sure thing', type: 'emoji: 🤷'}),
+                    timer: 3000
+                    // bg: '--color-blue' 
+                },
+                {
+                    cta: "continue",
+                    handler: () => DynamicToast({text: 'Great choice', type:'success'}),
+                    bg: 'limegreen'
+                }
+            ],
         }),
 
         // Example 6
